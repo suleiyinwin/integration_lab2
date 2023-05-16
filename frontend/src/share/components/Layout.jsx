@@ -23,16 +23,19 @@ const Layout = () => {
     return Math.random();
   };
   const [status, setStatus] = useState();
-    const [user, setUser] = useState();
-  const queryClient=new QueryClient();
+  const [user, setUser] = useState();
+  const [comments, setComments] = useState([]);
+  const queryClient = new QueryClient();
     
-    const globalContextValue = useMemo(()=>{
-      return{
-        user,
-        setUser,
-        setStatus,
-      };
-    },[user]);
+  const globalContextValue = useMemo(() => {
+    return {
+      user,
+      comments,
+      setUser,
+      setStatus,
+      setComments,
+    };
+  }, [user, comments, setComments]);
   
   return (
     <GlobalContext.Provider value={globalContextValue}>
